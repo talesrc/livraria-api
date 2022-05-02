@@ -1,5 +1,4 @@
-import { Column, DataType, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript'
-import { Adress } from './adress.model'
+import { Column, DataType, Model, Table } from 'sequelize-typescript'
 
 @Table
 export class Customer extends Model<Customer> {
@@ -15,6 +14,4 @@ export class Customer extends Model<Customer> {
     })
     cpf: string
 
-    @HasMany(() => Adress, 'id')
-    adresses: Adress[]
 }
