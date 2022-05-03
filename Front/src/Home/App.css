@@ -1,0 +1,39 @@
+body{
+  background: #613E3E;
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  height: 326px;
+  background: #613E3E;
+}
+
+.logo{
+  max-height: 120px;
+}
+
+.search{
+  width: 754px;
+  height: 56px;
+  text-align: center;
+
+  background: #FFFFFF;
+  border-radius: 135px;
+}
+
+.searchbutton{
+  background-color: rgba(16, 11, 0, 0);
+  margin-top: 15px;
+  max-height: 30px;
+}
+
+.searchbuttonimg{
+  max-height: 30px;
+  border-color: #100B00;
+}
+
+.login{
+  color: white;
+  position: ri
+}
