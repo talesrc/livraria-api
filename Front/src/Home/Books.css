@@ -1,0 +1,20 @@
+body{
+    background: white;
+}
+
+.main-div{
+    color: black;
+    display: inline-block;
+}
+.book{
+    max-height: 300px;
+}
+
+div.box {
+    padding-left: 50px;
+    display: inline-block;
+}
+
+a{
+    color: #613E3E;
+}
