@@ -1,8 +1,15 @@
-import { BelongsTo, Column, DataType, Model, Table } from 'sequelize-typescript'
+import { Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript'
 import { Customer } from './customer.model'
 
 @Table
 export class Adress extends Model<Adress> {
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    })
+    id: number
+
     @Column({
         type: DataType.STRING,
         allowNull: false

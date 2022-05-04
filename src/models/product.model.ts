@@ -1,28 +1,28 @@
 import { Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript'
 
 @Table
-export class Customer extends Model<Customer> {
+export class Product extends Model<Product> {
     @Column({
         type: DataType.STRING,
         allowNull: false
     })
-    name?: string
+    name: string
 
     @Column({
         type: DataType.STRING,
         allowNull: false
     })
-    cpf?: string
+    description: string
+
+    @Column({
+        type: DataType.FLOAT,
+        allowNull: false
+    })
+    price: number
 
     @Column({
         type: DataType.STRING,
         allowNull: false
     })
-    email?: string
-
-    @Column({
-        type: DataType.STRING,
-        allowNull: false
-    })
-    password?: string
+    picturePath: string
 }
