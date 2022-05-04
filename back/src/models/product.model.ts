@@ -1,4 +1,5 @@
 import { Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript'
+import { Category } from './category.model'
 
 @Table
 export class Product extends Model<Product> {
@@ -25,4 +26,14 @@ export class Product extends Model<Product> {
         allowNull: false
     })
     picturePath: string
+
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+        references: {
+            model: Category,
+            key: 'id'
+        }
+    })
+    categoryId: string
 }
