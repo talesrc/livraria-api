@@ -1,5 +1,8 @@
-import { Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript'
+import { BelongsToMany, Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript'
 import { Category } from './category.model'
+import { Order } from './order.model'
+import { OrderProduct } from './orderProduct.model'
+import { ProductCategory } from './productCategory.model'
 
 @Table
 export class Product extends Model<Product> {
@@ -27,13 +30,10 @@ export class Product extends Model<Product> {
     })
     picturePath: string
 
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-        references: {
-            model: Category,
-            key: 'id'
-        }
-    })
-    categoryId: string
+    //Relations
+    @BelongsToMany(() => Product, {through: {model: () => ProductCategory, unique: false}})
+    categories: Category[]
+
+    @BelongsToMany(() => Order, {through: {model: () => OrderProduct, unique: false}})
+    orders: Order[]
 }

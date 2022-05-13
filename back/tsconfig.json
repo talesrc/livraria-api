@@ -11,6 +11,7 @@
         "emitDecoratorMetadata": true,
         "target": "es6",
         "moduleResolution": "Node",
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "noImplicitAny": false
     }
 }

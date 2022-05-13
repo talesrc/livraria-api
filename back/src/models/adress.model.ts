@@ -1,15 +1,10 @@
-import { Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript'
-import { Customer } from './customer.model'
+import { BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript'
+import { Order } from './order.model'
+import { User } from './user.model'
 
 @Table
 export class Adress extends Model<Adress> {
-    @Column({
-        type: DataType.INTEGER,
-        allowNull: false,
-        primaryKey: true
-    })
-    id: number
-
+    
     @Column({
         type: DataType.STRING,
         allowNull: false
@@ -17,25 +12,29 @@ export class Adress extends Model<Adress> {
     street: string //rua
 
     @Column({
+            type: DataType.STRING,
+            allowNull: false
+        })
+    number: string
+
+    @Column({
         type: DataType.STRING,
         allowNull: false
     })
     district: string //bairro
 
+    @ForeignKey(() => User)
     @Column({
         type: DataType.STRING,
-        allowNull: false
-    })
-    number: string
-
-    //@BelongsTo(() => Customer, 'id')
-    @Column({
-        type: DataType.INTEGER,
         allowNull: false,
         references: {
-            model: Customer,
-            key: 'id'
+            model: User,
+            key: 'cpf'
         }
     })
-    customerId: number
+    userId: number
+    
+    //Relations
+    @BelongsTo(() => User)
+    customer: User
 }
