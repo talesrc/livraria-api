@@ -8,11 +8,11 @@ import { ProductCategory } from "../models/productCategory.model";
 import { Category } from "../models/category.model";
 
 export const db = new Sequelize({
-    dialect: 'mysql',
-    host: 'localhost',
+    dialect: 'mariadb',
+    host: 'db',
     port: 3306,
     username: 'root',
-    password: '',
+    password: 'senha1234',
     database: 'LIVRARIA',
     models: [User, Adress, Product, Order, OrderProduct, Category, ProductCategory],
     define: {
