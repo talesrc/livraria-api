@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title LOGIN
+        link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+    body
+        header
+            h1 LIVRARIA UEBITCHU
+
+        h2 LOGIN
+
+        form(method='POST', action='/user/login')
+            label Email:
+            input.form-control(name='email',type='text')
+            
+            label Password:
+            input.form-control(name='password',type='password')
+            br
+            input.btn.btn-primary(type='submit',value='Submit')

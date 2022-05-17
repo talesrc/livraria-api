@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title Editar Produto
+        link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+    body
+        header
+            h1 LIVRARIA UEBITCHU
+
+        h2 EDITAR PRODUTO
+
+        form(method='POST', action=`/product/update/`)
+            label Id:
+            input.form-control(name='id', type='text', value=product.id, readonly, required)
+            label Nome:
+            input.form-control(name='name', type='text', value=product.name, required)
+            label Descrição:
+            input.form-control(name='description', type='text', value=product.description, required)
+            label Preço:
+            input.form-control(name='price', type='number', value=product.price, min=0, max=1000, required)
+            label Autor:
+            input.form-control(name='author', type='text', value=product.author, required)
+            label Imagem:
+            input.form-control(name='picturePath', value=product.picturePath, type='text', required)
+            br
+            input.btn.btn-primary(type='submit',value='Submit')

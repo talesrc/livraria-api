@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        title Remover Produto
+        link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+    body
+        header
+            h1 LIVRARIA UEBITCHU
+
+        h2 REMOVER PRODUTO
+
+        form(method='POST', action=`/product/delete/`)
+            label Id:
+            input.form-control(name='id', type='text', value=produto.id, readonly, required)
+            label Nome:
+            input.form-control(name='name', type='text', value=produto.name, readonly, required)
+            br
+            input.btn.btn-primary(type='submit',value='Submit')
