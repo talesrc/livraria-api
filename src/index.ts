@@ -8,6 +8,8 @@ const orderRouter = require('./routes/order.router');
 const categoryRouter = require('./routes/category.router');
 const adminRouter = require('./routes/admin.router');
 
+var session = require('express-session')
+
 const path = require('path');
 
 const PORT = 3000
@@ -15,6 +17,14 @@ const PORT = 3000
 db.sync()
 
 const app = express()
+
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

@@ -62,10 +62,8 @@ exports.login = async (req: Request, res: Response) => {
             .then(result => result?.type)
             .catch(e => console.log(e))
         
-        if (user == 'admin') {
-            res.redirect('/admin/')
-        } else {
-            res.redirect('/user/login/')
+        if (user) {
+            jwt.sign()
         }
     }
 }
