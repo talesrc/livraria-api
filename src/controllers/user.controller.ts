@@ -59,11 +59,24 @@ exports.login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     if (req.body.email.length > 0 && req.body.password.length > 0) {
         const user: any = await User.findOne({ raw: true, where: { email: email, password: password } })
-            .then(result => result?.type)
-            .catch(e => console.log(e))
-        
+            .then(result => {
+                if (result?.cpf !== undefined) {
+                    return {
+                        cpf: result?.cpf,
+                        createdAt: result?.createdAt
+                    }
+                }
+            })
+            .catch(e => {
+                console.log(e)
+                res.redirect('/admin/login')
+            })
+
         if (user) {
-            jwt.sign()
+            const token = jwt.sign(user, 'secretKey')
+            res.cookie('access_token', 'Bearer ' + token).redirect('/admin/home/', )
+        } else {
+            res.redirect('/admin/login/')
         }
     }
 }

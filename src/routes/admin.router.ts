@@ -8,7 +8,7 @@ const order = require('../controllers/order.controller')
 
 router.get('/login', user.adminLogin)
 
-router.get('/', user.adminHome)
+router.get('/home', user.adminHome)
 
 router.get('/product/', product.getAll)
 router.get('/product/create', product.addProductPage)
