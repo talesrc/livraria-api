@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-const validateJwt = (req, res, next) => {
+/*const validateJwt = (req, res, next) => {
   const jwt = req.cookies
   console.log(jwt)
   const secretKey = "secretKey";
@@ -38,10 +38,10 @@ const validateJwt = (req, res, next) => {
       req.userInfo = userInfo;
       next();
   });
-};
+};*/
 
 app.use('/admin', adminRouter)
-app.use('/category', validateJwt, categoryRouter)
+app.use('/category', categoryRouter)
 app.use('/user', userRouter)
 app.use('/product', productRouter)
 app.use('/order', orderRouter)
