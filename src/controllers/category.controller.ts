@@ -5,7 +5,7 @@ import { Category } from "../models/category.model"
 exports.getAll = (req: Request, res: Response) => {
     Category.findAll({ raw: true })
         .then(result => {
-            res.render('category', {
+            res.render('admin/category/category', {
                 categories: result
             })
         })
@@ -25,13 +25,13 @@ exports.create = (req: Request, res: Response) => {
 }
 
 exports.addCategoryPage = (req: Request, res: Response) => {
-    res.render('createCategory')
+    res.render('admin/category/createCategory')
 }
 
 exports.updatePage = (req: Request, res: Response) => {
     Category.findByPk(req.params.id, { raw: true })
         .then(result => {
-            res.render('updateCategory', {
+            res.render('admin/category/updateCategory', {
                 category: result
             })
         })
@@ -44,7 +44,7 @@ exports.updatePage = (req: Request, res: Response) => {
 exports.deletePage = (req: Request, res: Response) => {
     Category.findByPk(req.params.id, { raw: true })
         .then(result => {
-            res.render('deleteCategory', {
+            res.render('admin/category/deleteCategory', {
                 category: result
             })
         })

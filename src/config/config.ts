@@ -9,10 +9,10 @@ import { Category } from "../models/category.model";
 
 export const db = new Sequelize({
     dialect: 'mariadb',
-    host: 'livraria-api_db_1',
+    host: 'localhost',
     port: 3306,
     username: 'root',
-    password: 'senha1234',
+    password: 'root',
     database: 'LIVRARIA',
     models: [User, Adress, Product, Order, OrderProduct, Category, ProductCategory],
     define: {

@@ -5,13 +5,13 @@ import { ProductCategory } from "../models/productCategory.model"
 exports.getAll = (req: Request, res: Response) => {
     Product.findAll({ raw: true })
         .then(result => {
-            res.render('product', {
+            res.render('admin/product/product', {
                 products: result
             })
         })
         .catch(e => {
             console.log(e)
-            res.redirect('/admin/')
+            res.redirect('/admin/product')
         })
 
 }
@@ -19,20 +19,20 @@ exports.getAll = (req: Request, res: Response) => {
 exports.updatePage = (req: Request, res: Response) => {
     Product.findByPk(req.params.id, { raw: true })
         .then(result => {
-            res.render('updateProduct', {
+            res.render('admin/product/updateProduct', {
                 product: result
             })
         })
         .catch(e => {
             console.log(e)
-            res.redirect('/admin/')
+            res.redirect('/admin/product')
         })
 }
 
 exports.deletePage = (req: Request, res: Response) => {
     Product.findByPk(req.params.id, { raw: true })
         .then(result => {
-            res.render('deleteProduct', {
+            res.render('admin/product/deleteProduct', {
                 product: result
             })
         })
@@ -65,7 +65,7 @@ exports.create = (req: Request, res: Response) => {
 }
 
 exports.addProductPage = (req: Request, res: Response) => {
-    res.render('createProduct')
+    res.render('admin/product/createProduct')
 }
 
 exports.update = (req: Request, res: Response) => {

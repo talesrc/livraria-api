@@ -4,13 +4,13 @@ import { Order } from "../models/order.model"
 exports.getAll = (req: Request, res: Response) => {
     Order.findAll({ raw: true })
         .then(result => {
-            res.render('order', {
+            res.render('admin/order/order', {
                 orders: result
             })
         })
         .catch(e => {
             console.log(e)
-            res.redirect('/admin')
+            res.redirect('/admin/menu')
         })
 }
 

@@ -2,21 +2,12 @@ version: '3.7'
 
 services:
 
-    db:
+    appDB:
       image: mariadb
+      container_name: appDB
       environment:
-        - MARIADB_ROOT_PASSWORD=senha1234
+        - MARIADB_ROOT_PASSWORD=root
         - MARIADB_DATABASE=LIVRARIA
       ports:
         - 3306:3306
-
-    app:
-        build:
-          context: .
-          dockerfile: ./Dockerfile
-        image: livraria-webii
-        ports:
-          - 3000:3000
-        
-        depends_on:
-          - db
+    
