@@ -24,13 +24,24 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function (req, res, next) {
-    console.log('Time:', Date.now());
-    next();
+const validateJwt = (req, res, next) => {
+  const jwt = req.cookies
+  console.log(jwt)
+  const secretKey = "secretKey";
+
+  const jwtService = require("jsonwebtoken");
+  jwtService.verify(jwt, secretKey, (err, userInfo) => {
+      if (err) {
+          res.render('withoutauth');
+          return;
+      }
+      req.userInfo = userInfo;
+      next();
   });
+};
 
 app.use('/admin', adminRouter)
-app.use('/category', categoryRouter)
+app.use('/category', validateJwt, categoryRouter)
 app.use('/user', userRouter)
 app.use('/product', productRouter)
 app.use('/order', orderRouter)
