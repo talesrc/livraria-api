@@ -7,12 +7,13 @@ html
     body
         header
             h1 
-                a.home(href="/admin/Home") LIVRARIA UEBITCHU
+                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
 
-        h2 ADICIONAR CATEGORIA
+        div.desc
+            h2 ADICIONAR CATEGORIA
 
-        form(method='POST', action='/category/create')
-            label Nome da categoria:
-            input.form-control(name='name', type='text')
-            br
-            input.btn.btn-primary(type='submit',value='Submit')
+            form(method='POST', action='/category/create')
+                label Nome da categoria:
+                input.form-control(name='name', type='text').loginput
+                br
+                input.btn.btn-primary(type='submit',value='Submit')

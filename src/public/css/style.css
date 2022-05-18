@@ -47,3 +47,16 @@ table {
     text-align: center;
     margin: auto;
 }
+
+.desc{
+    text-align: center;
+    margin: auto;
+}
+
+.main-div{
+    text-align: center;
+    border-style: double;
+    width: fit-content;
+    margin: auto;
+    padding: 30px;
+}

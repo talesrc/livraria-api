@@ -96,3 +96,7 @@ exports.withoutauth = (req: Request, res: Response) => {
 exports.signup = (req: Request, res: Response) => {
     res.render('signup')
 }
+
+exports.home1 = (req: Request, res: Response) => {
+    res.render('home1')
+}

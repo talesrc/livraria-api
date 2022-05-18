@@ -7,20 +7,22 @@ html
     body
         header
             h1 
-                a.home(href="/admin/Home") LIVRARIA UEBITCHU
+                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
 
-        h2 ADICIONAR PRODUTO
+        h2.desc
+            ADICIONAR PRODUTO:
 
-        form(method='POST', action='/product/create')
-            label Nome:
-            input.form-control(name='name', type='text', required)
-            label Descrição:
-            input.form-control(name='description', type='text', required)
-            label Preço:
-            input.form-control(name='price', type='number', min=0, max=1000, required)
-            label Autor:
-            input.form-control(name='author', type='text', required)
-            label Imagem:
-            input.form-control(name='picturePath', type='text', required)
-            br
-            input.btn.btn-primary(type='submit',value='Submit')
+        div.loginput
+            form(method='POST', action='/product/create')
+                label Nome:
+                input.form-control(name='name', type='text', required)
+                label Descrição:
+                input.form-control(name='description', type='text', required)
+                label Preço:
+                input.form-control(name='price', type='number', min=0, max=1000, required)
+                label Autor:
+                input.form-control(name='author', type='text', required)
+                label Imagem:
+                input.form-control(name='picturePath', type='text', required)
+                br
+                input.btn.btn-primary(type='submit',value='Enviar')

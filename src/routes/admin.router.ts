@@ -26,4 +26,6 @@ router.get('/withoutauth', user.withoutauth)
 
 router.get('/signup', user.signup)
 
+router.get('/home1', user.home1)
+
 module.exports = router;
