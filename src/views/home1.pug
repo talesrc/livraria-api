@@ -1,17 +1,17 @@
 doctype html
 html
     head
-        title Menu Pedidos
+        title Home
         link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
     body
         header
             h1 
                 a.home(href="/admin/Home1") LIVRARIA UEBITCHU
-        
-        div.auth
-            h1 NÃO AUTENTICADO!
-            H4 Para ter acesso é preciso logar
 
+        div.main-div
+            h1 SISTEMA DE ADMINISTRAÇÃO:
 
-            a(href="/admin/login") Clique aqui para logar!
+            a.btn.btn-primary(href=`/admin/signup`) Fazer cadastro
+            a.btn.btn-primary(href=`/admin/login`) Fazer login
+
