@@ -18,9 +18,32 @@ table {
 .btn-container {
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 
 .btn, .btn-primary {
     background-color: #333!important;
     width: 120px!important;
+}
+
+.home {
+    text-decoration: none;
+    color: white;
+}
+
+.log{
+    text-align: center;
+    margin: auto;
+}
+
+.loginput{
+    text-align: center;
+    margin: auto;
+    max-width: 300px;
+}
+
+.auth{
+    padding-top: 80px;
+    text-align: center;
+    margin: auto;
 }

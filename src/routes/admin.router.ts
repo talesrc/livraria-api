@@ -22,4 +22,8 @@ router.get('/category/delete/:id', category.deletePage)
 
 router.get('/order/', order.getAll)
 
+router.get('/withoutauth', user.withoutauth)
+
+router.get('/signup', user.signup)
+
 module.exports = router;

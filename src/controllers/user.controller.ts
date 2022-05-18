@@ -29,10 +29,10 @@ exports.create = (req: Request, res: Response) => {
             password: req.body.password,
             type: req.body.name == 'admin' ? 'admin' : 'user'
         })
-            .then(() => res.redirect('http://localhost:3000/user/login'))
+            .then(() => res.redirect('http://localhost:3000/admin/login'))
             .catch(e => {
                 console.log(e)
-                res.redirect('http://localhost:3000/register')
+                res.redirect('http://localhost:3000/admin/signup')
             })
     }
 }
@@ -87,4 +87,12 @@ exports.adminHome = (req: Request, res: Response) => {
 
 exports.adminLogin = (req: Request, res: Response) => {
     res.render('adminLogin')
+}
+
+exports.withoutauth = (req: Request, res: Response) => {
+    res.render('withoutauth')
+}
+
+exports.signup = (req: Request, res: Response) => {
+    res.render('signup')
 }
