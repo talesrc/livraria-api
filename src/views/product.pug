@@ -9,21 +9,27 @@ html
         h1
             a.home(href="/admin/Home") LIVRARIA UEBITCHU
     body
-        a.btn.btn-primary(href='/admin/product/create') Criar Produto
-
-        table
-            tr
-                th Nome
-                th Preço
-                th Autor
-                th Ações
-            
-            each product, i in products
-                tr
-                    td #{product.name}
-                    td #{product.price}
-                    td #{product.author}
-                    td 
-                        a.btn.btn-primary(href=`/admin/product/update/${product.id}`) Editar
-                        a.btn.btn-primary(href=`/admin/product/delete/${product.id}`) Excluir
     
+        div
+            a.btn.btn-primary(href='/admin/product/create') Criar Produto
+
+            table
+                tr
+                    th Nome
+                    th Preço
+                    th Autor
+                    th Ações
+                
+
+                each product, i in products
+                    tr
+                        td #{product.name}
+                        td #{product.price}
+                        td #{product.author}
+                        td 
+                            a.btn.btn-primary(href=`/admin/product/update/${product.id}`) Editar
+                            a.btn.btn-primary(href=`/admin/product/delete/${product.id}`) Excluir
+                            br
+            
+            a.btn.btn-primary(href=`/admin/home`) Voltar
+        
