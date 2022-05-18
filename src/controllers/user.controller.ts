@@ -74,7 +74,7 @@ exports.login = async (req: Request, res: Response) => {
 
         if (user) {
             const token = jwt.sign(user, 'secretKey')
-            res.cookie('access_token', 'Bearer ' + token).redirect('/admin/home/', )
+            res.cookie('access_token', token).redirect('/admin/home/', )
         } else {
             res.redirect('/admin/login/')
         }

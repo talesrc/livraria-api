@@ -24,6 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+    console.log('Time:', Date.now());
+    next();
+  });
+
 app.use('/admin', adminRouter)
 app.use('/category', categoryRouter)
 app.use('/user', userRouter)
