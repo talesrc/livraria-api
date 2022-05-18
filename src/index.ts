@@ -46,6 +46,10 @@ app.use('/user', userRouter)
 app.use('/product', productRouter)
 app.use('/order', orderRouter)
 
+app.get('/', (req, res) => {
+  res.render('home1')
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`)
 });
