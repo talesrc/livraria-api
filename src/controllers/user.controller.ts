@@ -84,6 +84,10 @@ exports.adminLogin = (req: Request, res: Response) => {
     res.render('admin/adminLogin')
 }
 
+exports.signInUser = (req: Request, res: Response) => {
+    res.render('user/signInUser')
+}
+
 exports.signUpUser = (req: Request, res: Response) => {
     res.render('user/signUpUser')
 }

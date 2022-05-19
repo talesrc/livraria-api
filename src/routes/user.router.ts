@@ -15,6 +15,8 @@ router.delete('/delete', userController.delete)
 
 router.get('/getByCPF/:cpf', userController.getByCPF)
 
+router.get('/signInUser', userController.signInUser)
+
 router.get('/signUpUser', userController.signUpUser)
 
 module.exports = router;

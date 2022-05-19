@@ -12,15 +12,26 @@ html
         
         div.box
             div.log
-                h2 LOGIN USUÁRIO
+                h2 CADASTRO USUÁRIO:
 
-                form(method='POST', action='/user/login')
-                    label Email:
-                    input.form-control(name='email',type='text').loginput
+                form(method='POST', action='/admin/register')
+                    label CPF:
+                    input.form-control(name='cpf',type='text' required).loginput
+
+                    label Nome :
+                    input.form-control(name='name',type='text' required).loginput
                     
-                    label Password:
-                    input.form-control(name='password',type='password').loginput
-                    br
-                    input.btn.btn-primary(type='submit',value='Entrar').loginput
+                    label Senha
+                    input.form-control(name='password',type='password' required).loginput
+                    
 
-                a(href="/user") Não tem cadastro? clique aqui 
+                    label Email:
+                    input.form-control(name='email',type='text' required).loginput
+
+
+                    br
+                    input.btn.btn-primary(type='submit',value='Enviar' required).loginput
+
+                a(href="/signInUser") Já tem cadastro? Clique aqui para logar 
+
+                    
