@@ -13,7 +13,7 @@ html
         div.loginput
             h2 REMOVER CATEGORIA
 
-            form(method='POST', action=`/category/delete/`)
+            form(method='POST', action=`/admin/category/delete`)
                 label Id:
                 input.form-control(name='id', type='text', value=category.id, readonly, required)
                 label Nome:

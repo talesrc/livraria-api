@@ -7,6 +7,17 @@ html
     body
         header
             h1 
-                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
-        
-        
+                a.home(href="mainhome") LIVRARIA
+            a.header-login(href="/admin/login") Login 
+
+        div.loginput
+            h2 PRODUTOS:
+          
+            div.books
+                each product, i in products
+                    
+                    a(href=`/product/${product.id}`).bookbox
+                        p= product.picturePath
+                        p= product.name
+                        p= product.price
+                        p= product.author

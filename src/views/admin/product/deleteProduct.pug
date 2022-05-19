@@ -13,7 +13,7 @@ html
 
         div.loginput
             h2 REMOVER PRODUTO
-            form(method='POST', action=`/delete`)
+            form(method='POST', action=`/admin/product/delete`)
                 label Id:
                 input.form-control(name='id', type='text', value=product.id, readonly, required)
                 label Nome:

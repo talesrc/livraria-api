@@ -2,8 +2,8 @@ import { Resolver } from "dns"
 import { Request, Response } from "express"
 import { Category } from "../models/category.model"
 
-exports.getAll = (req: Request, res: Response) => {
-    Category.findAll({ raw: true })
+exports.getAllCategoriesPage = async(req: Request, res: Response) => {
+    await Category.findAll({ raw: true })
         .then(result => {
             res.render('admin/category/category', {
                 categories: result
@@ -15,21 +15,12 @@ exports.getAll = (req: Request, res: Response) => {
         })
 }
 
-exports.create = (req: Request, res: Response) => {
-    Category.create(req.body)
-        .then(() => res.redirect('/admin/category'))
-        .catch(e => {
-            console.log(e)
-            res.redirect('/admin/category')
-        })
-}
-
-exports.addCategoryPage = (req: Request, res: Response) => {
+exports.createCategoryPage = (req: Request, res: Response) => {
     res.render('admin/category/createCategory')
 }
 
-exports.updatePage = (req: Request, res: Response) => {
-    Category.findByPk(req.params.id, { raw: true })
+exports.updateCategoryPage = async (req: Request, res: Response) => {
+    await Category.findByPk(req.params.id, { raw: true })
         .then(result => {
             res.render('admin/category/updateCategory', {
                 category: result
@@ -41,8 +32,8 @@ exports.updatePage = (req: Request, res: Response) => {
         })
 }
 
-exports.deletePage = (req: Request, res: Response) => {
-    Category.findByPk(req.params.id, { raw: true })
+exports.deleteCategoryPage = async (req: Request, res: Response) => {
+    await Category.findByPk(req.params.id, { raw: true })
         .then(result => {
             res.render('admin/category/deleteCategory', {
                 category: result
@@ -54,8 +45,17 @@ exports.deletePage = (req: Request, res: Response) => {
         })
 }
 
-exports.update = (req: Request, res: Response) => {
-    Category.update(req.body, { where: { id: req.body.id } })
+exports.create = async (req: Request, res: Response) => {
+    await Category.create(req.body)
+        .then(() => res.redirect('/admin/category'))
+        .catch(e => {
+            console.log(e)
+            res.redirect('/admin/category')
+        })
+}
+
+exports.update = async (req: Request, res: Response) => {
+    await Category.update(req.body, { where: { id: req.body.id } })
         .then(() => {
             res.redirect('/admin/category/')
         })
@@ -65,8 +65,8 @@ exports.update = (req: Request, res: Response) => {
         })
 }
 
-exports.delete = (req: Request, res: Response) => {
-    Category.destroy({ where: { id: req.body.id } })
+exports.delete = async (req: Request, res: Response) => {
+    await Category.destroy({ where: { id: req.body.id } })
         .then(() => res.redirect('/admin/category/'))
         .catch(e => {
             console.log(e)

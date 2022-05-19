@@ -1,10 +1,10 @@
 import { Request, Response } from "express"
 import { Order } from "../models/order.model"
 
-exports.getAll = (req: Request, res: Response) => {
-    Order.findAll({ raw: true })
+exports.getAllOrdersPage = async (req: Request, res: Response) => {
+    await Order.findAll({ raw: true })
         .then(result => {
-            res.render('admin/order/order', {
+            res.render('inConstruction', {
                 orders: result
             })
         })
@@ -14,8 +14,8 @@ exports.getAll = (req: Request, res: Response) => {
         })
 }
 
-exports.create = (req: Request, res: Response) => {
-    Order.create(req.body)
+exports.create = async (req: Request, res: Response) => {
+    await Order.create(req.body)
         .then(() => res.sendStatus(201))
         .catch(e => {
             console.log(e)
@@ -23,8 +23,8 @@ exports.create = (req: Request, res: Response) => {
         })
 }
 
-exports.getByUserId = (req: Request, res: Response) => {
-    Order.findAll({ where: { userId: req.params.id } })
+exports.getByUserId = async (req: Request, res: Response) => {
+    await Order.findAll({ where: { userId: req.params.id } })
         .then(result => res.json(result))
         .catch(e => {
             console.log(e)
@@ -32,8 +32,8 @@ exports.getByUserId = (req: Request, res: Response) => {
         })
 }
 
-exports.getById = (req: Request, res: Response) => {
-    Order.findAll({ where: { id: req.params.id } })
+exports.getById = async (req: Request, res: Response) => {
+    await Order.findAll({ where: { id: req.params.id } })
         .then(result => res.json(result))
         .catch(e => {
             console.log(e)
@@ -41,8 +41,8 @@ exports.getById = (req: Request, res: Response) => {
         })
 }
 
-exports.update = (req: Request, res: Response) => {
-    Order.update(req.body, { where: { id: req.body.id } })
+exports.update = async (req: Request, res: Response) => {
+    await Order.update(req.body, { where: { id: req.body.id } })
         .then(() => res.sendStatus(201))
         .catch(e => {
             console.log(e)
@@ -50,8 +50,8 @@ exports.update = (req: Request, res: Response) => {
         })
 }
 
-exports.delete = (req: Request, res: Response) => {
-    Order.destroy({ where: { id: req.body.id } })
+exports.delete = async (req: Request, res: Response) => {
+    await Order.destroy({ where: { id: req.body.id } })
         .then(() => res.sendStatus(201))
         .catch(e => {
             console.log(e)
