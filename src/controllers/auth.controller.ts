@@ -52,3 +52,7 @@ exports.adminHome = (req: Request, res: Response) => {
 exports.signUpAdmin = (req: Request, res: Response) => {
     res.render('admin/signUpAdmin')
 }
+
+exports.signUpAdmin = (req: Request, res: Response) => {
+    res.render('admin/signUpAdmin')
+}

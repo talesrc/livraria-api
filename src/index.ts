@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRouter)
 app.use('/category', categoryRouter)
 app.use('/', userRouter)
-app.use('/product', productRouter)
+app.use('/', productRouter)
 app.use('/order', orderRouter)
 
 app.get('/', (req, res) => {

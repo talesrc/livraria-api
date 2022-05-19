@@ -15,4 +15,6 @@ router.post('/delete', productController.delete)
 
 router.get('/getByCategory/:id', productController.getByCategory)
 
+router.get('/mainhome', productController.getAllProductUsers)
+
 module.exports = router;
