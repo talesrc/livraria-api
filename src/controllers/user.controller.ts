@@ -117,7 +117,11 @@ exports.homePage = (req: Request, res: Response) => {
     res.render('user/home')
 }
 
-exports.signUpUserPage = (req: Request, res: Response) => {
+exports.loginUserPage = (req: Request, res: Response) => {
+    res.render('user/loginUser')
+}
+
+exports.signUpUser = (req: Request, res: Response) => {
     res.render('user/signUpUser')
 }
 
