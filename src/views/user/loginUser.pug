@@ -13,7 +13,7 @@ html
         div.log
             h2 LOGIN USUÁRIO
 
-            form(method='POST', action='/user/login')
+            form(method='POST', action='/login')
                 label Email:
                 input.form-control(name='email',type='text').loginput
                     
@@ -23,5 +23,6 @@ html
                 input.btn.btn-primary(type='submit',value='Entrar').loginput
                 br
 
-                a.log(href="") 
-                a.log(href="../admin/login") Deseja logar como administrador?    
+                a(href="/signUp") Não tem cadastro? clique aqui
+                br 
+                a.log(href="/admin/login") Deseja logar como administrador?    

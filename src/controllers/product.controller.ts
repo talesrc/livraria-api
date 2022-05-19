@@ -54,7 +54,7 @@ exports.productPage = async (req: Request, res: Response) => {
         })
         .catch(e => {
             console.log(e)
-            res.redirect('/mainhome')
+            res.redirect('/home')
         })
 }
 

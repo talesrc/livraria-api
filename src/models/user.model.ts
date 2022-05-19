@@ -20,7 +20,7 @@ export class User extends Model<User> {
         type: DataType.STRING,
         allowNull: false
     })
-    type?: string
+    type: string
 
     @Column({
         type: DataType.STRING,

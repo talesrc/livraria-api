@@ -69,11 +69,10 @@ exports.loginAdmin = async (req: Request, res: Response) => {
     if (req.body.email.length > 0 && req.body.password.length > 0) {
         const user: any = await User.findOne({ raw: true, where: { email: email, password: password } })
             .then(result => {
-                if (result?.cpf !== undefined) {
-                    return {
-                        cpf: result?.cpf,
-                        createdAt: result?.createdAt
-                    }
+                return {
+                    cpf: result?.cpf,
+                    createdAt: result?.createdAt,
+                    type: result?.type
                 }
             })
             .catch(e => {
@@ -81,7 +80,7 @@ exports.loginAdmin = async (req: Request, res: Response) => {
                 res.redirect('/admin/login')
             })
 
-        if (user) {
+        if (user && user.type == 'admin') {
             const token = jwt.sign(user, 'secretKey')
             res.cookie('access_token', token).redirect('/admin/menu/',)
         } else {
@@ -90,12 +89,34 @@ exports.loginAdmin = async (req: Request, res: Response) => {
     }
 }
 
+exports.loginUser = async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+    if (req.body.email.length > 0 && req.body.password.length > 0) {
+        const user: any = await User.findOne({ raw: true, where: { email: email, password: password } })
+            .then(result => {
+                if (result?.cpf !== undefined) {
+                    return {
+                        cpf: result?.cpf,
+                        createdAt: result?.createdAt,
+                        type: result?.type
+                    }
+                }
+            })
+            .catch(e => {
+                console.log(e)
+                res.redirect('/admin/login')
+            })
 
-//Admins
-exports.admin = (req: Request, res: Response) => {
-    res.render('admin/menu')
+        if (user && user.type == 'user') {
+            const token = jwt.sign(user, 'secretKey')
+            res.cookie('access_token', token).redirect('/',)
+        } else {
+            res.redirect('/login/')
+        }
+    }
 }
 
+//Admins
 exports.adminMenu = (req: Request, res: Response) => {
     res.render('admin/menu')
 }
@@ -121,7 +142,7 @@ exports.loginUserPage = (req: Request, res: Response) => {
     res.render('user/loginUser')
 }
 
-exports.signUpUser = (req: Request, res: Response) => {
+exports.signUpUserPage = (req: Request, res: Response) => {
     res.render('user/signUpUser')
 }
 
