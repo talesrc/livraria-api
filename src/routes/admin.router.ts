@@ -49,11 +49,11 @@ router.get('/withoutauth', auth.withoutauth)
 
 router.get('/mainhome', auth.mainhome)
 
-router.get('/mainhome', auth.mainhome)
-
 router.get('/adminlogin', auth.adminLogin)
 
 router.get('/signUpAdmin', auth.signUpAdmin)
+
+router.get('/adminHome', auth.adminHome)
 
 
 module.exports = router;

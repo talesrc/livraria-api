@@ -83,7 +83,3 @@ exports.home = (req: Request, res: Response) => {
 exports.adminLogin = (req: Request, res: Response) => {
     res.render('admin/adminLogin')
 }
-
-exports.signUpAdmin = (req: Request, res: Response) => {
-    res.render('admin/signUpAdmin')
-}

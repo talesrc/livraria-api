@@ -44,3 +44,11 @@ exports.signup = (req: Request, res: Response) => {
 exports.mainhome = (req: Request, res: Response) => {
     res.render('mainhome')
 }
+
+exports.adminHome = (req: Request, res: Response) => {
+    res.render('admin/adminHome')
+}
+
+exports.signUpAdmin = (req: Request, res: Response) => {
+    res.render('admin/signUpAdmin')
+}
