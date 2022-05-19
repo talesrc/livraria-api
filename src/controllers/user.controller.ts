@@ -77,7 +77,7 @@ exports.adminHome = (req: Request, res: Response) => {
 }
 
 exports.home = (req: Request, res: Response) => {
-    res.render('home')
+    res.render('mainHome')
 }
 
 exports.adminLogin = (req: Request, res: Response) => {
