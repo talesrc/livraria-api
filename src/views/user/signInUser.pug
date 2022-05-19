@@ -10,17 +10,18 @@ html
                 a.home(href="mainhome") LIVRARIA
         
         
-        div.box
-            div.log
-                h2 LOGIN USUÁRIO
+        div.log
+            h2 LOGIN USUÁRIO
 
-                form(method='POST', action='/user/login')
-                    label Email:
-                    input.form-control(name='email',type='text').loginput
+            form(method='POST', action='/user/login')
+                label Email:
+                input.form-control(name='email',type='text').loginput
                     
-                    label Password:
-                    input.form-control(name='password',type='password').loginput
-                    br
-                    input.btn.btn-primary(type='submit',value='Entrar').loginput
+                label Password:
+                input.form-control(name='password',type='password').loginput
+                br
+                input.btn.btn-primary(type='submit',value='Entrar').loginput
+                br
 
-                a(href="/signUpUser") Não tem cadastro? clique aqui 
+                a.log(href="") 
+                a.log(href="../admin/login") Deseja logar como administrador?    

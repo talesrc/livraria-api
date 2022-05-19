@@ -7,12 +7,12 @@ html
     body
         header
             h1 
-                a.home(href="mainhome") LIVRARIA UEBITCHU
+                a.home(href="../mainhome") LIVRARIA UEBITCHU
         
         
         div.box
             div.log
-                h2 LOGIN
+                h2 LOGIN ADMINISTRADOR
 
                 form(method='POST', action='/admin/login')
                     label Email:
@@ -23,4 +23,6 @@ html
                     br
                     input.btn.btn-primary(type='submit',value='Entrar').loginput
 
-                a(href="/admin/signUpAdmin") Não tem cadastro? clique aqui 
+                a(href="/admin/signUpAdmin") Não tem cadastro? clique aqui
+                br
+                a.log(href="../signInUser") Deseja logar como usuário?
