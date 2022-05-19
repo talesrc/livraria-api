@@ -15,4 +15,5 @@ router.delete('/delete', userController.delete)
 
 router.get('/getByCPF/:cpf', userController.getByCPF)
 
+
 module.exports = router;

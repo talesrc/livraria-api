@@ -47,4 +47,13 @@ router.get('/signup', auth.signup)
 
 router.get('/withoutauth', auth.withoutauth)
 
+router.get('/mainhome', auth.mainhome)
+
+router.get('/mainhome', auth.mainhome)
+
+router.get('/adminlogin', auth.adminLogin)
+
+router.get('/signUpAdmin', auth.signUpAdmin)
+
+
 module.exports = router;
