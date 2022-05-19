@@ -7,13 +7,13 @@ html
     body
         header
             h1 
-                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
+                a.home(href="/mainhome") LIVRARIA UEBITCHU
 
         h2.desc
             ADICIONAR PRODUTO:
 
         div.loginput
-            form(method='POST', action='/product/create')
+            form(method='POST', action='/create')
                 label Nome:
                 input.form-control(name='name', type='text', required)
                 label Descrição:

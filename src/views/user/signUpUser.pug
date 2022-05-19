@@ -12,9 +12,9 @@ html
         
         div.box
             div.log
-                h2 LOGIN
+                h2 LOGIN USUÁRIO
 
-                form(method='POST', action='/admin/login')
+                form(method='POST', action='/user/login')
                     label Email:
                     input.form-control(name='email',type='text').loginput
                     
@@ -23,4 +23,4 @@ html
                     br
                     input.btn.btn-primary(type='submit',value='Entrar').loginput
 
-                a(href="/admin/signUpAdmin") Não tem cadastro? clique aqui 
+                a(href="/user") Não tem cadastro? clique aqui 

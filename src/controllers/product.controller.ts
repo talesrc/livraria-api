@@ -13,7 +13,19 @@ exports.getAll = (req: Request, res: Response) => {
             console.log(e)
             res.redirect('/admin/product')
         })
+}
 
+exports.getAllProductUsers = (req: Request, res: Response) => {
+    Product.findAll({ raw: true })
+        .then(result => {
+            res.render('mainhome', {
+                products: result
+            })
+        })
+        .catch(e => {
+            console.log(e)
+            res.redirect('/admin/product')
+        })
 }
 
 exports.updatePage = (req: Request, res: Response) => {

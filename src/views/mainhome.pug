@@ -7,14 +7,17 @@ html
     body
         header
             h1 
-                a.home(href="/admin/mainhome") LIVRARIA
+                a.home(href="mainhome") LIVRARIA
             a.header-login(href="/admin/login") Login 
 
-        div
-            div.btn-container
-                a.btn.btn-primary(href='/admin/category/') Login cliente
-                a.btn.btn-primary(href='/admin/product/')  Login ADM
-
-
-        
-        
+        div.loginput
+            h2 PRODUTOS:
+          
+            div.books
+                each product, i in products
+                    
+                    a(href="").bookbox
+                        p= product.picturePath
+                        p= product.name
+                        p= product.price
+                        p= product.author
