@@ -41,6 +41,19 @@ exports.updatePage = (req: Request, res: Response) => {
         })
 }
 
+exports.productPage = (req: Request, res: Response) => {
+    Product.findByPk(req.params.id, { raw: true })
+        .then(result => {
+            res.render('user/product', {
+                product: result
+            })
+        })
+        .catch(e => {
+            console.log(e)
+            res.redirect('/mainhome')
+        })
+}
+
 exports.deletePage = (req: Request, res: Response) => {
     Product.findByPk(req.params.id, { raw: true })
         .then(result => {

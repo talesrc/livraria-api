@@ -64,6 +64,11 @@ table {
 .books{
     text-align: center;
     
+}
+
+.productBox {
+    width: 85%;
+    border: 1px #333;
 
 }
 

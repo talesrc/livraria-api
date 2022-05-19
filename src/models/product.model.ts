@@ -34,7 +34,7 @@ export class Product extends Model<Product> {
         type: DataType.STRING,
         allowNull: false
     })
-    picturePath: string
+    image: string
 
     //Relations
     @BelongsToMany(() => Product, {through: {model: () => ProductCategory, unique: false}})

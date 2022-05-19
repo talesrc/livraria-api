@@ -18,10 +18,11 @@ const verifyToken = (req, res, next) => {
         const { cpf } = jwt.verify(token, 'secretKey')
         User.findByPk(cpf, { raw: true })
             .then(result => {
-                next()
-            }
-            )
+                if (result?.type == 'admin') next()
+            })
             .catch(e => console.log(e))
+    } else {
+        return res.redirect('/admin/withoutauth')
     }
 }
 

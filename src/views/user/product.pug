@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title ${}
+        link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+    body
+        header
+            h1 
+                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
+
+        div.productBox
+            .imageBox 
+                img(src="", alt="")
+            .bookInfo 
+                h3= product.name 
+                h4= product.author 
+                p= product.description

@@ -32,7 +32,7 @@ app.use('/', productRouter)
 app.use('/order', orderRouter)
 
 app.get('/', (req, res) => {
-  res.render('home')
+  res.render('mainhome')
 })
 
 app.listen(PORT, () => {
