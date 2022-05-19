@@ -19,9 +19,9 @@ const verifyToken = (req, res, next) => {
         User.findByPk(cpf, { raw: true })
             .then(result => {
                 if (result?.type == 'admin') next()
-            }
-            )
+            })
             .catch(e => console.log(e))
+    } else {
         return res.redirect('/admin/withoutauth')
     }
 }

@@ -16,7 +16,7 @@ html
             div.books
                 each product, i in products
                     
-                    a(href="").bookbox
+                    a(href=`/product/${product.id}`).bookbox
                         p= product.picturePath
                         p= product.name
                         p= product.price
