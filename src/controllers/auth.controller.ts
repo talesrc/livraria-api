@@ -37,8 +37,8 @@ exports.withoutauth = (req: Request, res: Response) => {
     res.render('withoutAuth')
 }
 
-exports.signup = (req: Request, res: Response) => {
-    res.render('signup')
+exports.mainhome = (req: Request, res: Response) => {
+    res.render('mainhome')
 }
 
 exports.mainhome = (req: Request, res: Response) => {

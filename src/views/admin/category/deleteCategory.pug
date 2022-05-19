@@ -9,12 +9,14 @@ html
             h1 
                 a.home(href="/admin/Home1") LIVRARIA UEBITCHU
 
-        h2 REMOVER CATEGORIA
 
-        form(method='POST', action=`/category/delete/`)
-            label Id:
-            input.form-control(name='id', type='text', value=category.id, readonly, required)
-            label Nome:
-            input.form-control(name='name', type='text', value=category.name, readonly, required)
-            br
-            input.btn.btn-primary(type='submit',value='Submit')
+        div.loginput
+            h2 REMOVER CATEGORIA
+
+            form(method='POST', action=`/category/delete/`)
+                label Id:
+                input.form-control(name='id', type='text', value=category.id, readonly, required)
+                label Nome:
+                input.form-control(name='name', type='text', value=category.name, readonly, required)
+                br
+                input.btn.btn-primary(type='submit',value='Remover')

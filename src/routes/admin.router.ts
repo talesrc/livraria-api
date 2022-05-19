@@ -43,7 +43,6 @@ router.get('/category/delete/:id', verifyToken, category.deletePage)
 
 router.get('/order/', verifyToken, order.getAll)
 
-router.get('/signup', auth.signup)
 
 router.get('/withoutauth', auth.withoutauth)
 

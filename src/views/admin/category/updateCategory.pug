@@ -5,15 +5,18 @@ html
         link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
     body
-        h1 
-                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
+        header 
+            h1 
+                    a.home(href="/admin/Home1") LIVRARIA UEBITCHU
 
-        h2 EDITAR CATEGORIA
+        div.loginput
+            h2 EDITAR CATEGORIA
 
-        form(method='POST', action=`/category/update/`)
-            label Id:
-            input.form-control(name='id', type='text', value=category.id, readonly, required)
-            label Nome:
-            input.form-control(name='name', type='text', value=category.name, required)
-            br
-            input.btn.btn-primary(type='submit',value='Submit')
+            form(method='POST', action=`/category/update/`)
+                label Id:
+                input.form-control(name='id', type='text', value=category.id, readonly, required)
+                label Nome:
+                input.form-control(name='name', type='text', value=category.name, required)
+                br
+                
+                input.btn.btn-primary(type='submit',value='EDITAR')
