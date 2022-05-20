@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 const auth = require('../middlewares/auth.middleware');
+const image = require('../middlewares/image.middleware')
 const productController = require('../controllers/product.controller')
 
 //Métodos para renderizar as páginas
@@ -13,9 +14,10 @@ router.get('/admin/product/create', auth.verifyAdminToken, productController.cre
 router.get('/admin/product/update/:id', auth.verifyAdminToken, productController.updateProductPage)
 router.get('/admin/product/delete/:id', auth.verifyAdminToken, productController.deleteProductPage)
 router.get('/product/:id', productController.productPage)
+router.get('/', productController.userGetAllProductsPage)
 
 //Métodos que fazem alterações nos banco de dados
-router.post('/admin/product/create', auth.verifyAdminToken, productController.create)
+router.post('/admin/product/create', image.upload.single('image'), productController.create)
 router.post('/admin/product/update', auth.verifyAdminToken, productController.update)
 router.post('/admin/product/delete', auth.verifyAdminToken, productController.delete)
 

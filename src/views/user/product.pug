@@ -1,18 +1,18 @@
 doctype html
 html
     head
-        title ${}
+        title= product.name
         link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
     body
         header
-            h1 
-                a.home(href="/admin/Home1") LIVRARIA UEBITCHU
-
-        div.productBox
-            .imageBox 
-                img(src="", alt="")
-            .bookInfo 
-                h3= product.name 
-                h4= product.author 
-                p= product.description
+            h1
+                a.home(href="/") LIVRARIA UEBITCHU
+        div.homeContainer
+            div.productBox
+                .imageBox 
+                    img(src=product.image)
+                .bookInfo 
+                    h3= product.name 
+                    h4= product.author 
+                    p= product.description

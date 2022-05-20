@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import { Product } from "../models/product.model"
-import { ProductCategory } from "../models/productCategory.model"
 
 exports.createProductPage = (req: Request, res: Response) => {
     res.render('admin/product/createProduct')
@@ -22,7 +21,7 @@ exports.adminGetAllProductsPage = async (req: Request, res: Response) => {
 exports.userGetAllProductsPage = async (req: Request, res: Response) => {
     await Product.findAll({ raw: true })
         .then(result => {
-            res.render('mainHome', {
+            res.render('user/home', {
                 products: result
             })
         })

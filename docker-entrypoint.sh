@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mysql -u user -psenha1234
+mysql -u root -proot
 
 USE LIVRARIA;
 

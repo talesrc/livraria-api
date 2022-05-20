@@ -6,7 +6,8 @@ html
         link(rel='stylesheet' href='/css/style.css')
     body
         header 
-            h1 a.home(href="mainhome") LIVRARIA UEBITCHU
+            h1 
+                a.home(href="/") LIVRARIA UEBITCHU
         h2 EDITAR PRODUTO
 
         form(method='POST', action=`/admin/product/update`)
@@ -21,6 +22,6 @@ html
             label Autor:
             input.form-control(name='author', type='text', value=product.author, required)
             label Imagem:
-            input.form-control(name='image', value=product.image, type='text', required)
+            input.form-control(name='image', type='file', accept='image/*', required)
             br
             input.btn.btn-primary(type='submit',value='Submit')

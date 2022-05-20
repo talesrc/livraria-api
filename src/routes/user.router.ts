@@ -15,8 +15,6 @@ router.get('/admin/withoutAuth', userController.adminWithoutAuth)
 router.get('/withoutAuth', userController.adminWithoutAuth)
 router.get('/login', userController.loginUserPage)
 router.get('/signUp', userController.signUpUserPage)
-router.get('/', userController.homePage)
-
 
 //Métodos que fazem alterações nos banco de dados
 router.post('/admin/login', userController.loginAdmin)

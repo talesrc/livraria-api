@@ -134,10 +134,6 @@ exports.adminWithoutAuth = (req: Request, res: Response) => {
 }
 
 //Users
-exports.homePage = (req: Request, res: Response) => {
-    res.render('user/home')
-}
-
 exports.loginUserPage = (req: Request, res: Response) => {
     res.render('user/loginUser')
 }
