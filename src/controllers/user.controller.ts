@@ -81,8 +81,8 @@ exports.loginAdmin = async (req: Request, res: Response) => {
             })
 
         if (user && user.type == 'admin') {
-            const token = jwt.sign(user, 'secretKey')
-            res.cookie('access_token', token).redirect('/admin/menu/',)
+            const token = jwt.sign(user, 'secretKey', { expiresIn: 600 })
+            res.cookie('access_token', token).redirect('/admin/menu/')
         } else {
             res.redirect('/admin/login/')
         }
@@ -108,7 +108,7 @@ exports.loginUser = async (req: Request, res: Response) => {
             })
 
         if (user && user.type == 'user') {
-            const token = jwt.sign(user, 'secretKey')
+            const token = jwt.sign(user, 'secretKey', { expiresIn: '5h' })
             res.cookie('access_token', token).redirect('/',)
         } else {
             res.redirect('/login/')
