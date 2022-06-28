@@ -1,18 +1,22 @@
+import { User } from "../models/user.model";
+
 var express = require('express');
 var router = express.Router();
-const auth = require('../middlewares/auth.middleware');
+
+const { validateToken } = require('../middlewares/auth.middleware');
+const { cache } = require('../middlewares/cache.middleware');
 
 const categoryController = require('../controllers/category.controller')
 
 //Métodos para renderizar as páginas
-router.get('/admin/category/', auth.verifyAdminToken, categoryController.getAllCategoriesPage)
-router.get('/admin/category/create', auth.verifyAdminToken, categoryController.createCategoryPage)
-router.get('/admin/category/update/:id', auth.verifyAdminToken, categoryController.updateCategoryPage)
-router.get('/admin/category/delete/:id', auth.verifyAdminToken, categoryController.deleteCategoryPage)
+router.get('/admin/category/', [validateToken, cache], categoryController.getAllCategoriesPage)
+router.get('/admin/category/create', [validateToken, cache], categoryController.createCategoryPage)
+router.get('/admin/category/update/:id', [validateToken, cache], categoryController.updateCategoryPage)
+router.get('/admin/category/delete/:id', [validateToken, cache], categoryController.deleteCategoryPage)
 
 //Métodos que fazem alterações nos banco de dados
-router.post('/admin/category/create', auth.verifyAdminToken, categoryController.create)
-router.post('/admin/category/update', auth.verifyAdminToken, categoryController.update)
-router.post('/admin/category/delete', auth.verifyAdminToken, categoryController.delete)
+router.post('/admin/category/create', validateToken, categoryController.create)
+router.post('/admin/category/update', validateToken, categoryController.update)
+router.post('/admin/category/delete', validateToken, categoryController.delete)
 
 module.exports = router;

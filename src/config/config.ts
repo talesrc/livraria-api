@@ -12,7 +12,7 @@ export const db = new Sequelize({
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: '',
+    password: 'tales',
     database: 'LIVRARIA',
     models: [User, Adress, Product, Order, OrderProduct, Category, ProductCategory],
     define: {
