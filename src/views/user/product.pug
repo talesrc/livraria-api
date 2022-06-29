@@ -16,3 +16,6 @@ html
                     h3= product.name 
                     h4= product.author 
                     p= product.description
+                    .tags
+                    each category in product.categories 
+                        p.categoryTag= category.name

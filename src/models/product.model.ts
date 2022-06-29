@@ -37,7 +37,7 @@ export class Product extends Model<Product> {
     image: string
 
     //Relations
-    @BelongsToMany(() => Product, {through: {model: () => ProductCategory, unique: false}})
+    @BelongsToMany(() => Category, {through: {model: () => ProductCategory, unique: false}})
     categories: Category[]
 
     @BelongsToMany(() => Order, {through: {model: () => OrderProduct, unique: false}})

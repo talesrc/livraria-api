@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { Category } from "../models/category.model"
 import { Product } from "../models/product.model"
 
 exports.createProductPage = (req: Request, res: Response) => {
@@ -19,7 +20,7 @@ exports.adminGetAllProductsPage = async (req: Request, res: Response) => {
 }
 
 exports.userGetAllProductsPage = async (req: Request, res: Response) => {
-    await Product.findAll({ raw: true })
+    await Product.findAll({ raw: true, include: { model: Category, attributes: ['name'] } })
         .then(result => {
             res.render('user/home', {
                 products: result
@@ -34,6 +35,7 @@ exports.userGetAllProductsPage = async (req: Request, res: Response) => {
 exports.updateProductPage = async (req: Request, res: Response) => {
     await Product.findByPk(req.params.id, { raw: true })
         .then(result => {
+            console.log(result)
             res.render('admin/product/updateProduct', {
                 product: result
             })
@@ -45,10 +47,17 @@ exports.updateProductPage = async (req: Request, res: Response) => {
 }
 
 exports.productPage = async (req: Request, res: Response) => {
-    await Product.findByPk(req.params.id, { raw: true })
+    await Product.findByPk(req.params.id, {
+        include: {
+            model: Category,
+            through: { attributes: [] }
+        }
+    })
         .then(result => {
+            const product = JSON.parse(JSON.stringify(result, null, 2))
+            console.log(product)
             res.render('user/product', {
-                product: result
+                product: product
             })
         })
         .catch(e => {
