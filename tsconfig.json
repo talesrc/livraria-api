@@ -12,6 +12,7 @@
         "target": "es6",
         "moduleResolution": "Node",
         "strictPropertyInitialization": false,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "skipLibCheck": true
     }
 }

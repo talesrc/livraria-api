@@ -10,6 +10,8 @@ html
                 a.home(href="/") LIVRARIA UEBITCHU
         h2 EDITAR PRODUTO
 
+        - var categoryId = []
+
         form(method='POST', action=`/admin/product/update`)
             label Id:
             input.form-control(name='id', type='text', value=product.id, readonly, required)
@@ -18,10 +20,28 @@ html
             label Descrição:
             input.form-control(name='description', type='text', value=product.description, required)
             label Preço:
-            input.form-control(name='price', type='number', value=product.price, min=0, max=1000, required)
+            input.form-control(name='price', type='number', value=product.price, min=0, max=10000, step='.01', required)
             label Autor:
             input.form-control(name='author', type='text', value=product.author, required)
             label Imagem:
             input.form-control(name='image', type='file', accept='image/*', required)
-            br
+            label Categorias:
+                br
+                each category in categories
+                    if (product.categories.length > 0)
+                        each productCategory in product.categories
+                            if (category.id === productCategory.id)
+                                .form-check.form-check-inline
+                                    input.form-check-input(value=category.id, type='checkbox', name='categories', checked)
+                                    label.form-check-label= category.name
+                                - break
+                            else
+                                .form-check.form-check-inline
+                                    input.form-check-input(value=category.id, type='checkbox', name='categories')
+                                    label.form-check-label= category.name
+                    else
+                        .form-check.form-check-inline
+                            input.form-check-input(value=category.id, type='checkbox', name='categories')
+                            label.form-check-label= category.name
+                br
             input.btn.btn-primary(type='submit',value='Submit')

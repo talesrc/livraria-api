@@ -2,24 +2,24 @@ import { Column, DataType, ForeignKey, Model, PrimaryKey, Table } from 'sequeliz
 import { Category } from './category.model'
 import { Product } from './product.model'
 
-@Table
+@Table({indexes: [{unique: false, fields: ['productId', 'categoryId']}]})
 export class ProductCategory extends Model<ProductCategory> {
 
-    @PrimaryKey
     @ForeignKey(() => Product)
     @Column({
-        type: DataType.STRING,
+        type: DataType.INTEGER,
         allowNull: false,
-        unique: false
+        unique: false,
+        primaryKey: true
     })
-    productId?: string
+    productId?: number
 
-    @PrimaryKey
     @ForeignKey(() => Category)
     @Column({
-        type: DataType.STRING,
+        type: DataType.INTEGER,
         allowNull: false,
-        unique: false
+        unique: false,
+        primaryKey: true
     })
     categoryId?: number
 }

@@ -1,9 +1,15 @@
 import { Request, Response } from "express"
 import { Category } from "../models/category.model"
 import { Product } from "../models/product.model"
+import { ProductCategory } from "../models/productCategory.model"
 
-exports.createProductPage = (req: Request, res: Response) => {
-    res.render('admin/product/createProduct')
+exports.createProductPage = async (req: Request, res: Response) => {
+    await Category.findAll({ raw: true }).then(result => {
+        console.log(result)
+        res.render('admin/product/createProduct', {
+            categories: result
+        })
+    })
 }
 
 exports.adminGetAllProductsPage = async (req: Request, res: Response) => {
@@ -20,7 +26,7 @@ exports.adminGetAllProductsPage = async (req: Request, res: Response) => {
 }
 
 exports.userGetAllProductsPage = async (req: Request, res: Response) => {
-    await Product.findAll({ raw: true, include: { model: Category, attributes: ['name'] } })
+    await Product.findAll({ raw: true })
         .then(result => {
             res.render('user/home', {
                 products: result
@@ -33,16 +39,27 @@ exports.userGetAllProductsPage = async (req: Request, res: Response) => {
 }
 
 exports.updateProductPage = async (req: Request, res: Response) => {
-    await Product.findByPk(req.params.id, { raw: true })
+    const categories = await Category.findAll({ raw: true })
+        .catch(e => {
+            console.log(e)
+            res.redirect('/admin/product')
+        })
+    await Product.findByPk(req.params.id, {
+        include: {
+            model: Category,
+            through: { attributes: [] }
+        }
+    })
         .then(result => {
             console.log(result)
             res.render('admin/product/updateProduct', {
-                product: result
+                product: JSON.parse(JSON.stringify(result, null, 2)),
+                categories: categories
             })
         })
         .catch(e => {
             console.log(e)
-            res.redirect('/admin/product')
+            res.redirect('/home')
         })
 }
 
@@ -54,10 +71,8 @@ exports.productPage = async (req: Request, res: Response) => {
         }
     })
         .then(result => {
-            const product = JSON.parse(JSON.stringify(result, null, 2))
-            console.log(product)
             res.render('user/product', {
-                product: product
+                product: JSON.parse(JSON.stringify(result, null, 2))
             })
         })
         .catch(e => {
@@ -80,23 +95,41 @@ exports.deleteProductPage = async (req: Request, res: Response) => {
 }
 
 exports.create = async (req: Request, res: Response) => {
-    await Product.create(req.body)
-        .then(() => res.redirect('/admin/product/'))
+    const productId = await Product.create(req.body, { raw: true })
+        .then(result => result.id)
         .catch(e => {
             console.log(e)
-            res.redirect('/admin/')
+            res.redirect('/admin/product/')
         })
+    if (req.body.categories) {
+        for (let categoryId of req.body.categories) {
+            await ProductCategory.create<any>({ productId: productId, categoryId: categoryId })
+                .catch(e => console.log(e))
+        }
+        res.redirect('/admin/product')
+    }
 }
 
 
 
 exports.update = async (req: Request, res: Response) => {
     await Product.update(req.body, { where: { id: req.body.id } })
-        .then(() => res.redirect('/admin/product/'))
         .catch(e => {
             console.log(e)
             res.redirect('/admin/product/')
         })
+    await ProductCategory.destroy({ where: { productId: req.body.id } })
+        .catch(e => {
+            console.log(e)
+            res.redirect('/admin/product/')
+        })
+    if (req.body.categories) {
+        for (let categoryId of req.body.categories) {
+            await ProductCategory.create<any>({ productId: req.body.id, categoryId: categoryId })
+                .catch(e => console.log(e))
+        }
+        res.redirect('/admin/product')
+    }
 }
 
 exports.delete = async (req: Request, res: Response) => {
