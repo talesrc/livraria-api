@@ -107,6 +107,8 @@ exports.create = async (req: Request, res: Response) => {
                 .catch(e => console.log(e))
         }
         res.redirect('/admin/product')
+    } else {
+        res.redirect('/admin/product')
     }
 }
 

@@ -15,7 +15,7 @@ html
             div.books
                 each product, i in products
                     a(href=`/product/${product.id}`).bg-dark.productCard
-                        img(src=product.image)
+                        img(src=product.image).productCardImage
                         p= product.name
                         p= product.author
                         p  R$#{product.price}

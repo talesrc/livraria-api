@@ -79,10 +79,13 @@ table {
     width: 95%;
     border: 1px #333 solid;
     border-radius: 0.5rem;
+    padding: 5px;
 }
 
 .imageBox {
     width: 60%;
+    display: flex;
+    justify-content: center;
 }
 
 .productCard {
@@ -93,7 +96,11 @@ table {
     padding: 5px;
     border-radius: 10px;
     text-decoration: none;
-    width: 250px;
+    width: 300px;
+}
+
+.productCardImage {
+    width: 100%;
 }
 
 .tags {
