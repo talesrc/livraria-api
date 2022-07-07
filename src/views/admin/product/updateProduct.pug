@@ -23,25 +23,11 @@ html
             input.form-control(name='price', type='number', value=product.price, min=0, max=10000, step='.01', required)
             label Autor:
             input.form-control(name='author', type='text', value=product.author, required)
-            label Imagem:
-            input.form-control(name='image', type='file', accept='image/*', required)
-            label Categorias:
+            if (categories.length > 0)
+                label Categorias:
                 br
                 each category in categories
-                    if (product.categories.length > 0)
-                        each productCategory in product.categories
-                            if (category.id === productCategory.id)
-                                .form-check.form-check-inline
-                                    input.form-check-input(value=category.id, type='checkbox', name='categories', checked)
-                                    label.form-check-label= category.name
-                                - break
-                            else
-                                .form-check.form-check-inline
-                                    input.form-check-input(value=category.id, type='checkbox', name='categories')
-                                    label.form-check-label= category.name
-                    else
-                        .form-check.form-check-inline
-                            input.form-check-input(value=category.id, type='checkbox', name='categories')
-                            label.form-check-label= category.name
-                br
+                    label.form-check-label= category.name
+                    input.form-check-input(value=category.id, type='checkbox', name='categories')
+            br
             input.btn.btn-primary(type='submit',value='Submit')

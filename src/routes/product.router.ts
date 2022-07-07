@@ -24,4 +24,11 @@ router.post('/admin/product/create', [validateToken, image.upload.single('image'
 router.post('/admin/product/update', validateToken, productController.update)
 router.post('/admin/product/delete', validateToken, productController.delete)
 
+//API
+router.get('/api/product/', productController.APIgetAll)
+router.get('/api/product/:id', productController.APIgetById)
+router.post('/api/product/', productController.APIcreate)
+router.delete('/api/product/:id', productController.APIdelete)
+router.put('/api/product/:id', productController.APIupdate)
+
 module.exports = router;

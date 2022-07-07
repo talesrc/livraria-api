@@ -1,6 +1,50 @@
-import { Resolver } from "dns"
 import { Request, Response } from "express"
 import { Category } from "../models/category.model"
+
+exports.APIgetAll = (req: Request, res: Response) => {
+    Category.findAll()
+    .then(result => res.json(result))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIcreate = (req: Request, res: Response) => {
+    Category.create(req.body)
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIgetById = (req: Request, res: Response) => {
+    Category.findAll({where: {id: req.params.id}})
+    .then(result => res.json(result))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIupdate = (req: Request, res: Response) => {
+    Category.update(req.body, {where: {id: req.params.id}})
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIdelete = (req: Request, res: Response) => {
+    Category.destroy({where: {id: req.params.id}})
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
 
 exports.getAllCategoriesPage = async(req: Request, res: Response) => {
     await Category.findAll({ raw: true })

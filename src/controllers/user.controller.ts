@@ -3,6 +3,51 @@ import { User } from "../models/user.model"
 
 const jwt = require("jsonwebtoken");
 
+exports.APIgetAll = (req: Request, res: Response) => {
+    User.findAll({attributes: {exclude: ['password', 'createdAt', 'updatedAt']}})
+    .then(result => res.json(result))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIgetByCPF = (req: Request, res: Response) => {
+    User.findByPk(req.params.cpf, {attributes: {exclude: ['password', 'createdAt', 'updatedAt']}})
+    .then(result => res.json(result))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIcreate = (req: Request, res: Response) => {
+    User.create(req.body)
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIupdate = (req: Request, res: Response) => {
+    User.update(req.body, {where: {id: req.params.cpf}})
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIdelete = (req: Request, res: Response) => {
+    User.destroy({where: {cpf: req.params.cpf}})
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
 exports.getByCPF = async (req: Request, res: Response) => {
     await User.findByPk(req.params.cpf)
         .then(result => res.json(result))

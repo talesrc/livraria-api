@@ -19,4 +19,11 @@ router.post('/admin/category/create', validateToken, categoryController.create)
 router.post('/admin/category/update', validateToken, categoryController.update)
 router.post('/admin/category/delete', validateToken, categoryController.delete)
 
+//API
+router.get('/api/category/', categoryController.APIgetAll)
+router.get('/api/category/:id', categoryController.APIgetById)
+router.post('/api/category/', categoryController.APIcreate)
+router.delete('/api/category/:id', categoryController.APIdelete)
+router.put('/api/category/:id', categoryController.APIupdate)
+
 module.exports = router;

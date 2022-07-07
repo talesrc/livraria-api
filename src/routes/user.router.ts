@@ -23,4 +23,10 @@ router.post('/admin/register', userController.createAdmin)
 router.post('/register', userController.createUser)
 router.post('/login', userController.loginUser)
 
+//API
+router.get('/api/user/', userController.APIgetAll)
+router.get('/api/user/:cpf', userController.APIgetByCPF)
+router.post('/api/user/', userController.APIcreate)
+router.delete('/api/user/:cpf', userController.APIdelete)
+
 module.exports = router;

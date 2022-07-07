@@ -3,6 +3,51 @@ import { Category } from "../models/category.model"
 import { Product } from "../models/product.model"
 import { ProductCategory } from "../models/productCategory.model"
 
+exports.APIgetAll = (req: Request, res: Response) => {
+    Product.findAll()
+    .then(result => res.json(result))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIgetById = (req: Request, res: Response) => {
+    Product.findByPk(req.params.id)
+    .then(result => res.json(result))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIcreate = (req: Request, res: Response) => {
+    Product.create(req.body)
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIupdate = (req: Request, res: Response) => {
+    Product.update(req.body, {where: {id: req.params.id}})
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
+exports.APIdelete = (req: Request, res: Response) => {
+    Product.destroy({where: {id: req.params.id}})
+    .then(()=> res.sendStatus(201))
+    .catch(e => {
+        console.log(e)
+        res.sendStatus(400)
+    })
+}
+
 exports.createProductPage = async (req: Request, res: Response) => {
     await Category.findAll({ raw: true }).then(result => {
         console.log(result)
@@ -51,7 +96,6 @@ exports.updateProductPage = async (req: Request, res: Response) => {
         }
     })
         .then(result => {
-            console.log(result)
             res.render('admin/product/updateProduct', {
                 product: JSON.parse(JSON.stringify(result, null, 2)),
                 categories: categories
@@ -115,6 +159,7 @@ exports.create = async (req: Request, res: Response) => {
 
 
 exports.update = async (req: Request, res: Response) => {
+    console.log(req.body)
     await Product.update(req.body, { where: { id: req.body.id } })
         .catch(e => {
             console.log(e)
@@ -130,6 +175,8 @@ exports.update = async (req: Request, res: Response) => {
             await ProductCategory.create<any>({ productId: req.body.id, categoryId: categoryId })
                 .catch(e => console.log(e))
         }
+        res.redirect('/admin/product')
+    } else {
         res.redirect('/admin/product')
     }
 }
