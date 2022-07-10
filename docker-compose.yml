@@ -11,16 +11,15 @@ services:
       ports:
         - 3306:3306
       volumes:
-        - ./db:/var/lib/mysql/
+        - ./db:/var/lib/mysql
       
     app:
+        container_name: app
         build:
           context: .
           dockerfile: ./Dockerfile
-        image: livraria-webii
+        image: livraria
         ports:
           - 3000:3000
         depends_on:
           - appDB
-        volumes:
-          - ./:/MVC
