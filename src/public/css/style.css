@@ -162,6 +162,11 @@ td {
     padding: 0px 5px;
 }
 
-.loginCart {
-    margin: 0px 5px;
+.userLinks{
+    text-align: end;
+    position: absolute;
+    height: 100px;
+    top: 0;
+    right: 0;
+    margin: 20px;
 }
