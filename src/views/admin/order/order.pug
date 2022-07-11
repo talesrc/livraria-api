@@ -1,15 +1,28 @@
 doctype html
 html
     head
-        title Menu Pedidos
+        title Menu Produtos
         link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
+    
+    header
+        h1
+            a.home(href="/") LIVRARIA UEBITCHU
     body
-        header
-            h1 
-                a.home(href="/") LIVRARIA UEBITCHU
-        
+    
         div.crud
-            h1 EM CONSTRUÇÃO!
 
+            table
+                tr
+                    th CPF Cliente
+                    th Preço
+                    th Status
+                
+                each order, i in orders
+                    tr
+                        td #{order.userId}
+                        td #{order.price}
+                        td #{order.status}
+            
+            a.btn.btn-primary(href=`/admin/menu`) Voltar
         

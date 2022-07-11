@@ -9,6 +9,7 @@ header {
     color: rgb(230, 230, 230);
     display: flex;
     justify-content: center;
+    flex-direction: row;
 }
 
 a:hover {
@@ -155,4 +156,8 @@ table {
 .invisible {
     width: 0px;
     height: 0px;
+}
+
+td {
+    padding: 0px 5px;
 }

@@ -10,7 +10,7 @@ const unique = (value, index, self) => {
 exports.getAllOrdersPage = async (req: Request, res: Response) => {
     await Order.findAll({ raw: true })
         .then(result => {
-            res.render('inConstruction', {
+            res.render('admin/order/order', {
                 orders: result
             })
         })
