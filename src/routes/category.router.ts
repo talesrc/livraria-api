@@ -9,7 +9,7 @@ const { cache } = require('../middlewares/cache.middleware');
 const categoryController = require('../controllers/category.controller')
 
 //Métodos para renderizar as páginas
-router.get('/admin/category/', [validateToken, cache], categoryController.getAllCategoriesPage)
+router.get('/admin/category/', validateToken, categoryController.getAllCategoriesPage)
 router.get('/admin/category/create', [validateToken, cache], categoryController.createCategoryPage)
 router.get('/admin/category/update/:id', [validateToken, cache], categoryController.updateCategoryPage)
 router.get('/admin/category/delete/:id', [validateToken, cache], categoryController.deleteCategoryPage)

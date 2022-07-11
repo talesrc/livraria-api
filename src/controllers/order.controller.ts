@@ -1,5 +1,11 @@
 import { Request, Response } from "express"
 import { Order } from "../models/order.model"
+import { Product } from "../models/product.model"
+const jwt = require("jsonwebtoken");
+
+const unique = (value, index, self) => {
+    return self.indexOf(value) === index
+}
 
 exports.getAllOrdersPage = async (req: Request, res: Response) => {
     await Order.findAll({ raw: true })
@@ -14,12 +20,32 @@ exports.getAllOrdersPage = async (req: Request, res: Response) => {
         })
 }
 
+exports.addProductOrder = async (req: Request, res: Response) => {
+    let order_products = req.cookies.order_products
+    console.log(order_products)
+    if (!order_products) {
+        order_products = []
+    }
+    order_products.push(req.params.id)
+    res.cookie('order_products', order_products)
+    res.redirect(`/product/${req.params.id}`)
+}
+
 exports.create = async (req: Request, res: Response) => {
-    await Order.create(req.body)
-        .then(() => res.sendStatus(201))
+    const accessToken = req.cookies.access_token
+    const { cpf } = jwt.decode(accessToken)
+    const newOrder = {
+        userId: cpf,
+        status: 'waiting',
+        price: req.body.price
+    }
+    await Order.create<any>(newOrder)
+        .then(() => {
+            res.redirect('/')
+        })
         .catch(e => {
             console.log(e)
-            res.sendStatus(400)
+            res.redirect('/cart')
         })
 }
 
@@ -57,4 +83,28 @@ exports.delete = async (req: Request, res: Response) => {
             console.log(e)
             res.sendStatus(400)
         })
+}
+
+exports.userCartPage = async (req: Request, res: Response) => {
+    let order_products = req.cookies.order_products
+    const products: any = []
+    let totalPrice = 0
+    if (order_products) {
+        for (let productId of order_products) {
+            await Product.findByPk(productId, { raw: true })
+                .then(result => {
+                    products.push(result)
+                    totalPrice += result!.price
+                })
+                .catch(e => {
+                    console.log(e)
+                    res.redirect('/')
+                })
+        }
+    }
+    console.log(totalPrice)
+    res.render('user/cart', {
+        products: products,
+        totalPrice: totalPrice
+    })
 }

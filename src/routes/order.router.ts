@@ -3,8 +3,15 @@ var router = express.Router();
 
 const orderController = require('../controllers/order.controller')
 
-router.post('/create', orderController.create)
+//Métodos para renderizar as páginas
 router.get('/admin/order', orderController.getAllOrdersPage)
+router.get('/cart', orderController.userCartPage)
+
+//Métodos que fazem alterações
+router.post('/user/createOrder', orderController.create)
+router.post('/order/addProduct/:id', orderController.addProductOrder)
+
+//API
 router.put('/update', orderController.update)
 router.delete('/delete', orderController.delete)
 router.get('/getById/:id', orderController.getById)

@@ -126,7 +126,7 @@ exports.loginAdmin = async (req: Request, res: Response) => {
             })
 
         if (user && user.type == 'admin') {
-            const token = jwt.sign(user, 'secretKey', { expiresIn: 600 })
+            const token = jwt.sign(user, 'secretKey', { expiresIn: 6000 })
             res.cookie('access_token', token).redirect('/admin/menu/')
         } else {
             res.redirect('/admin/login/')

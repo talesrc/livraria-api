@@ -19,3 +19,6 @@ html
                     .tags
                     each category in product.categories 
                         p.categoryTag= category.name
+                    br
+                    form(method='POST', action=`/order/addProduct/${product.id}`, enctype='multipart/form-data')
+                        input.btn.btn-primary(type='submit',value='Adicionar ao Carrinho')

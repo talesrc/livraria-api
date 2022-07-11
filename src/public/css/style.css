@@ -28,7 +28,7 @@ table {
 .btn,
 .btn-primary {
     background-color: #333 !important;
-    width: 120px !important;
+    width: auto !important;
 }
 
 .home {
@@ -129,4 +129,30 @@ table {
     justify-content: center;
     align-items: center;
     margin-top: 5px;
+}
+
+.productOrderBox {
+    height: 150px;
+    width: 60%;
+    border: solid 1px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.productOrderImage {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.imageCart {
+    width: 30%;
+    height: 100%;
+}
+
+.invisible {
+    width: 0px;
+    height: 0px;
 }

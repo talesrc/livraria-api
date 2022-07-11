@@ -21,7 +21,7 @@ export class Order extends Model<Order> {
 
     @ForeignKey(() => User)
     @Column({
-            type: DataType.INTEGER,
+            type: DataType.STRING,
             allowNull: false
         })
     userId: number

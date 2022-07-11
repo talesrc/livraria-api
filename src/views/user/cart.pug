@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        title LOGIN
+        link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css')
+        link(rel='stylesheet' href='/css/style.css')
+    body
+        header
+            h1 
+                a.home(href="/") LIVRARIA UEBITCHU
+
+        div.homeContainer
+            each product in products
+                div.productOrderBox
+                    .productOrderImage
+                        img(src= product.image).imageCart
+
+                    .productOrderInfo
+                        h4= product.name
+                        h7= product.author
+                        h5  #[strong R$#{product.price}]
+                        
+            h4 #[strong Total: #{totalPrice}]
+            h7  #[strong APENAS RETIRADA NA LOJA!]
+
+            form(method='POST', action='/user/createOrder')
+                input.invisible(name='price', type='number', step='.01', value=totalPrice)
+                input.btn.btn-primary(type='submit', value='Finalizar Pedido')
+            

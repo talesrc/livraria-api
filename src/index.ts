@@ -7,6 +7,7 @@ const userRouter = require('./routes/user.router');
 const productRouter = require('./routes/product.router');
 const orderRouter = require('./routes/order.router');
 const categoryRouter = require('./routes/category.router');
+var cookieParser = require('cookie-parser')
 
 
 const path = require('path');
@@ -16,6 +17,7 @@ const PORT = 3000
 db.sync()
 const app = express()
 
+app.use(cookieParser())
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
