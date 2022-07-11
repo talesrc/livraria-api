@@ -22,6 +22,7 @@ exports.APIgetByCPF = (req: Request, res: Response) => {
 }
 
 exports.APIcreate = (req: Request, res: Response) => {
+    if (req.body.cpf )
     User.create(req.body)
     .then(()=> res.sendStatus(201))
     .catch(e => {

@@ -9,7 +9,7 @@ import { Category } from "../models/category.model";
 
 export const db = new Sequelize({
     dialect: 'mariadb',
-    host: 'localhost',
+    host: 'appDB',
     port: 3306,
     username: 'root',
     password: 'root',
