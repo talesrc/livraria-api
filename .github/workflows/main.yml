@@ -7,5 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: docker-compose up -d
-      - name: Test
-        run: npm i | npm test
+      - name: Install Dependencies
+        run: npm i
+      - name: Tests
+        run: npm test
