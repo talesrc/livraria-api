@@ -19,11 +19,13 @@ html
                         h4= product.name
                         h7= product.author
                         h5  #[strong R$#{product.price}]
+                        form(method='POST', action=`/order/removeProduct/${product.id}`)
+                            input.btn.btn-primary(type='submit', value='Remover')
                         
             h4 #[strong Total: #{totalPrice}]
             h7  #[strong APENAS RETIRADA NA LOJA!]
 
             form(method='POST', action='/user/createOrder')
-                input.invisible(name='price', type='number', step='.01', value=totalPrice)
+                input(name='price', type='hidden', step='.01', value=totalPrice)
                 input.btn.btn-primary(type='submit', value='Finalizar Pedido')
             

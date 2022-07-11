@@ -22,13 +22,12 @@ exports.getAllOrdersPage = async (req: Request, res: Response) => {
 
 exports.addProductOrder = async (req: Request, res: Response) => {
     let order_products = req.cookies.order_products
-    console.log(order_products)
     if (!order_products) {
         order_products = []
     }
     order_products.push(req.params.id)
     res.cookie('order_products', order_products)
-    res.redirect(`/product/${req.params.id}`)
+    res.redirect(`/cart`)
 }
 
 exports.create = async (req: Request, res: Response) => {
@@ -102,9 +101,20 @@ exports.userCartPage = async (req: Request, res: Response) => {
                 })
         }
     }
-    console.log(totalPrice)
     res.render('user/cart', {
         products: products,
-        totalPrice: totalPrice
+        totalPrice: totalPrice.toFixed(2)
     })
+}
+
+exports.removeCartProduct = (req: Request, res: Response) => {
+    const orderProducts = req.cookies.order_products
+    const productIndex = orderProducts.indexOf(req.params.id);
+    console.log(productIndex)
+    if (productIndex > -1) {
+        orderProducts.splice(productIndex, 1)
+        console.log(orderProducts)
+    }
+    res.cookie('order_products', orderProducts)
+    res.redirect('/cart')
 }

@@ -10,6 +10,7 @@ router.get('/cart', orderController.userCartPage)
 //Métodos que fazem alterações
 router.post('/user/createOrder', orderController.create)
 router.post('/order/addProduct/:id', orderController.addProductOrder)
+router.post('/order/removeProduct/:id', orderController.removeCartProduct)
 
 //API
 router.put('/update', orderController.update)

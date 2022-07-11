@@ -133,7 +133,7 @@ table {
 }
 
 .productOrderBox {
-    height: 150px;
+    height: 170px;
     width: 60%;
     border: solid 1px;
     display: flex;
@@ -160,4 +160,8 @@ table {
 
 td {
     padding: 0px 5px;
+}
+
+.loginCart {
+    margin: 0px 5px;
 }
