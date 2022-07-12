@@ -8,4 +8,4 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Tests
-        run: docker exec app npm test
+        run: sleep 10 && docker exec app npm test
