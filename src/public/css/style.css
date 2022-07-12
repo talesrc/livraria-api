@@ -87,6 +87,11 @@ table {
     width: 60%;
     display: flex;
     justify-content: center;
+    margin: 10px;
+}
+
+.showImage{
+    max-width: 60%;
 }
 
 .productCard {
@@ -162,6 +167,11 @@ td {
     padding: 0px 5px;
 }
 
-.loginCart {
-    margin: 0px 5px;
+.userLinks{
+    text-align: end;
+    position: absolute;
+    height: 100px;
+    top: 0;
+    right: 0;
+    margin: 20px;
 }

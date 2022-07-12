@@ -1,4 +1,5 @@
 doctype html
+
 html
     head
         title Home
@@ -7,9 +8,14 @@ html
     body
         header
             h1 
-                a.home(href="/") LIVRARIA UEBITCHU 
-            a.loginCart(href='/cart') Meu Carrinho
-            a.loginCart(href='/login') Login
+                a.home(href="/") LIVRARIA UEBITCHU
+            
+            div.userLinks
+                a(href='/login') login
+                br
+                a(href='/cart') Carrinho de compras
+                
+        
         div.homeContainer
             h2 LIVROS
           
@@ -20,4 +26,3 @@ html
                         p= product.name
                         p= product.author
                         p  R$#{product.price}
-            
