@@ -87,6 +87,11 @@ table {
     width: 60%;
     display: flex;
     justify-content: center;
+    margin: 10px;
+}
+
+.showImage{
+    max-width: 60%;
 }
 
 .productCard {
