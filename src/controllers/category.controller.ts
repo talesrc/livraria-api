@@ -1,52 +1,56 @@
 import { Request, Response } from "express"
 import { Category } from "../models/category.model"
 
-exports.APIgetAll = (req: Request, res: Response) => {
-    Category.findAll()
-    .then(result => res.json(result))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIgetAll = async (req: Request, res: Response) => {
+    await Category.findAll()
+        .then(result => res.json(result))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.APIcreate = (req: Request, res: Response) => {
-    Category.create(req.body)
-    .then(()=> res.sendStatus(201))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIcreate = async (req: Request, res: Response) => {
+    await Category.create(req.body)
+        .then(() => res.sendStatus(201))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.APIgetById = (req: Request, res: Response) => {
-    Category.findAll({where: {id: req.params.id}})
-    .then(result => res.json(result))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIgetById = async (req: Request, res: Response) => {
+    const category = await Category.findByPk(req.params.id)
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
+    if (category) {
+        res.json(category)
+    } else {
+        res.sendStatus(404)
+    }
 }
 
-exports.APIupdate = (req: Request, res: Response) => {
-    Category.update(req.body, {where: {id: req.params.id}})
-    .then(()=> res.sendStatus(201))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIupdate = async (req: Request, res: Response) => {
+    await Category.update(req.body, { where: { id: req.params.id } })
+        .then(() => res.sendStatus(201))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.APIdelete = (req: Request, res: Response) => {
-    Category.destroy({where: {id: req.params.id}})
-    .then(()=> res.sendStatus(201))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIdelete = async (req: Request, res: Response) => {
+    await Category.destroy({ where: { id: req.params.id } })
+        .then(() => res.sendStatus(201))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.getAllCategoriesPage = async(req: Request, res: Response) => {
+exports.getAllCategoriesPage = async (req: Request, res: Response) => {
     await Category.findAll({ raw: true })
         .then(result => {
             res.render('admin/category/category', {

@@ -3,49 +3,53 @@ import { Category } from "../models/category.model"
 import { Product } from "../models/product.model"
 import { ProductCategory } from "../models/productCategory.model"
 
-exports.APIgetAll = (req: Request, res: Response) => {
-    Product.findAll()
-    .then(result => res.json(result))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIgetAll = async (req: Request, res: Response) => {
+    await Product.findAll()
+        .then(result => res.json(result))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.APIgetById = (req: Request, res: Response) => {
-    Product.findByPk(req.params.id)
-    .then(result => res.json(result))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIgetById = async (req: Request, res: Response) => {
+    const product = await Product.findByPk(req.params.id)
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(404)
+        })
+    if(product) {
+        res.json(product)
+    } else {
+        res.sendStatus(404)
+    }
 }
 
-exports.APIcreate = (req: Request, res: Response) => {
-    Product.create(req.body)
-    .then(()=> res.sendStatus(201))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIcreate = async (req: Request, res: Response) => {
+    await Product.create(req.body)
+        .then(() => res.sendStatus(201))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.APIupdate = (req: Request, res: Response) => {
-    Product.update(req.body, {where: {id: req.params.id}})
-    .then(()=> res.sendStatus(201))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIupdate = async (req: Request, res: Response) => {
+    await Product.update(req.body, { where: { id: req.params.id } })
+        .then(() => res.sendStatus(201))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
-exports.APIdelete = (req: Request, res: Response) => {
-    Product.destroy({where: {id: req.params.id}})
-    .then(()=> res.sendStatus(201))
-    .catch(e => {
-        console.log(e)
-        res.sendStatus(400)
-    })
+exports.APIdelete = async (req: Request, res: Response) => {
+    await Product.destroy({ where: { id: req.params.id } })
+        .then(() => res.sendStatus(201))
+        .catch(e => {
+            console.log(e)
+            res.sendStatus(400)
+        })
 }
 
 exports.createProductPage = async (req: Request, res: Response) => {
