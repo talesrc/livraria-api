@@ -10,8 +10,7 @@ services:
         - MARIADB_DATABASE=LIVRARIA
       ports:
         - 3306:3306
-      volumes:
-        - ./db:/var/lib/mysql
+
       
     app:
         container_name: app

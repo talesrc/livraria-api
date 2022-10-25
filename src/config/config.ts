@@ -9,7 +9,7 @@ import { Category } from "../models/category.model";
 
 export const db = new Sequelize({
     dialect: 'mariadb',
-    host: 'appDB',
+    host: 'localhost',
     port: 3306,
     username: 'root',
     password: 'root',
@@ -17,5 +17,6 @@ export const db = new Sequelize({
     models: [User, Adress, Product, Order, OrderProduct, Category, ProductCategory],
     define: {
         timestamps: false
-    }
+    },
+    logging: false
 });
