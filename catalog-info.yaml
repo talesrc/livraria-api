@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: livraria-api
+  annotations:
+    github.com/project-slug: talesrc/livraria-api
+spec:
+  type: other
+  lifecycle: unknown
+  owner: taleco
