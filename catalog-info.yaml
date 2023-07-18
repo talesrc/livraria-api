@@ -5,8 +5,8 @@ metadata:
   annotations:
     github.com/project-slug: talesrc/livraria-api
 spec:
-  type: other
-  lifecycle: unknown
+  type: service
+  lifecycle: dev
   owner: taleco
   parameters:
     - title: Fill in some steps
