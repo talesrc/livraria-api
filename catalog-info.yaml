@@ -8,3 +8,48 @@ spec:
   type: other
   lifecycle: unknown
   owner: taleco
+  parameters:
+    client:
+      title: Cliente
+      type: string
+      description: Cliente
+      ui:widget: cliente
+      default: tecsinapse
+      enum:
+        - tecsinapse
+        - mercedes
+        - bajaj
+    stage:
+      title: stage
+      type: string
+      description: stage
+      ui:widget: stage
+      default: "dev"
+      enum:
+        - prod
+        - homolog
+        - dev
+    cpu_request:
+      title: cpu_request
+      type: string
+      description: cpu_request
+      ui:widget: cpu_request
+      default: "0.1"
+    cpu_limits:
+      title: cpu_limits
+      type: string
+      description: cpu_limits
+      ui:widget: cpu_request
+      default: "0.1"
+    memory_request:
+      title: memory_request
+      type: string
+      description: memory_request
+      ui:widget: memory_request
+      default: "0.1"
+    memory_limits:
+      title: memory_limits
+      type: string
+      description: memory_limits
+      ui:widget: memory_limits
+      default: "0.1"
