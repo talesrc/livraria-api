@@ -4,6 +4,7 @@ metadata:
   name: livraria-api
   annotations:
     github.com/project-slug: talesrc/livraria-api
+    backstage.io/kubernetes-id: livraria-api
 spec:
   type: service
   lifecycle: dev
