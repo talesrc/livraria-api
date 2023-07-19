@@ -19,6 +19,6 @@ services:
           dockerfile: ./Dockerfile
         image: livraria
         ports:
-          - 3000:3000
+          - 4000:3000
         depends_on:
           - appDB
