@@ -1,0 +1,8 @@
+site_name: 'livraria-api'
+
+nav:
+  - Home: README.md
+
+plugins:
+  - techdocs-core
+
