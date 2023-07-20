@@ -5,7 +5,7 @@ metadata:
   annotations:
     github.com/project-slug: talesrc/livraria-api
     backstage.io/kubernetes-id: livraria-api
-    backstage.io/techdocs-ref: dir:.
+    backstage.io/techdocs-ref: dir:./README.md
 spec:
   type: service
   lifecycle: dev
