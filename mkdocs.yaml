@@ -1,8 +1,7 @@
-site_name: 'livraria-api'
+site_name: 'example-docs'
 
 nav:
-  - Home: README.md
+  - Home: index.md
 
 plugins:
   - techdocs-core
-
